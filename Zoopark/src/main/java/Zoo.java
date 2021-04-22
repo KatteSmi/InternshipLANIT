@@ -1,44 +1,30 @@
-import animals.Animal;
-import animals.animalBehavior.Swim;
-import animals.animalBehavior.Voice;
-import animals.carnivorous.Lion;
-import animals.carnivorous.Raccoon;
 import animals.herbivores.Duck;
-import animals.herbivores.Fish;
-import food.Food;
-import food.typesOfFoodCarnivorous.Zebra;
-import food.typesOfFoodHerbivores.Salat;
-import food.typesOfFoodHerbivores.Seed;
-import worker.Worker;
-
-import java.util.ArrayList;
-import java.util.List;
+import enclosure.AnimalEnclosure;
+import animals.Carnivorous;
+import animals.Herbivore;
+import animals.carnivorous.Lion;
 
 public class Zoo {
     public static void main(String[] args) {
-        Worker worker = new Worker();
-        Lion lion = new Lion();
-        Food zebra = new Zebra();
-        Food salat = new Salat();
 
-        worker.feed(lion, zebra);
-        worker.feed(lion, salat);
+        Lion lion = new Lion("Лев");
+        Duck duck = new Duck("Утка");
 
-        worker.getVoice(lion);
 
-        List<Animal> pondWithAnimals = new ArrayList<Animal>();
-        pondWithAnimals.add(new Fish());
-        pondWithAnimals.add(new Duck());
-        pondWithAnimals.add(new Raccoon());
 
-        for (Animal animal : pondWithAnimals) {
-            ((Swim) animal).swim();
-        }
+       AnimalEnclosure<Carnivorous> animalEnclosureCarnivorous = new AnimalEnclosure<>();
+        AnimalEnclosure<Herbivore> animalEnclosureHerbivore = new AnimalEnclosure<>();
 
-        Duck duck = new Duck();
-        Food seed = new Seed();
-        duck.eat(seed);
-        System.out.printf("Животное съело: %s калорий\n", duck.getCountSatiety());
+//       animalEnclosureCarnivorous.addAnimal(lion);
+//
+//        System.out.println(animalEnclosureCarnivorous);
+//
+//        animalEnclosureHerbivore.addAnimal(duck);
+//
+//        animalEnclosureHerbivore.getALinkToAnimal("Утка");
+//
+//        System.out.println(animalEnclosureHerbivore);
+
 
     }
 }

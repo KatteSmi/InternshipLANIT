@@ -5,11 +5,12 @@ import animals.animalBehavior.Swim;
 
 public class Raccoon extends Carnivorous implements Swim {
 
-    public Raccoon(int countFood) {
-        super(countFood);
+    public Raccoon(int countSatiety, int id, String name) {
+        super(countSatiety, id, name);
     }
 
-    public Raccoon() {
+    public Raccoon(String name) {
+        super(name);
     }
 
     public void swim() {

@@ -4,14 +4,14 @@ import food.Food;
 import food.Meat;
 
 
-public abstract class Carnivorous extends Animal {
+public abstract class Carnivorous extends Animal{
 
-    public Carnivorous(int countFood) {
-        super(countFood);
+    public Carnivorous(int countSatiety, int id, String name) {
+        super(countSatiety, id, name);
     }
 
-    public Carnivorous() {
-
+    public Carnivorous(String name) {
+        super(name);
     }
 
     @Override

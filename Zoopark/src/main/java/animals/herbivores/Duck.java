@@ -6,11 +6,12 @@ import animals.animalBehavior.Swim;
 
 public class Duck extends Herbivore implements Fly, Swim {
 
-    public Duck(int countFood) {
-        super(countFood);
+    public Duck(int countSatiety, int id, String name) {
+        super(countSatiety, id, name);
     }
 
-    public Duck() {
+    public Duck(String name) {
+        super(name);
     }
 
     public void fly() {

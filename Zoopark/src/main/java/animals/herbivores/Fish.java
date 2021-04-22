@@ -5,11 +5,12 @@ import animals.animalBehavior.Swim;
 
 public class Fish extends Herbivore implements Swim {
 
-    public Fish(int countFood) {
-        super(countFood);
+    public Fish(int countSatiety, int id, String name) {
+        super(countSatiety, id, name);
     }
 
-    public Fish() {
+    public Fish(String name) {
+        super(name);
     }
 
     public void swim() {

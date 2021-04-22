@@ -5,14 +5,16 @@ import animals.animalBehavior.Voice;
 
 public class Lion extends Carnivorous implements Voice {
 
-    public Lion(int countFood) {
-        super(countFood);
+    public Lion(int countSatiety, int id, String name) {
+        super(countSatiety, id, name);
     }
 
-    public Lion() {
+    public Lion(String name) {
+        super(name);
     }
 
     public String voice() {
         return "Голос льва";
     }
+
 }
