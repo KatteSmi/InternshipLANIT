@@ -1,18 +1,28 @@
 package enclosure;
 
 import animals.Animal;
+import animals.TypesOfAviaries;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class AnimalEnclosure<T extends Animal> {
 
-    private final Map<String, T> enclosureAnimals = new HashMap<>();
+    private  final Map<String, T> enclosureAnimals = new HashMap<>();
+
+    TypesOfAviaries typesOfAviaries;
+
+    public AnimalEnclosure(TypesOfAviaries typesOfAviaries) {
+        this.typesOfAviaries = typesOfAviaries;
+    }
 
     public void addAnimal (T animal) {
 
-        enclosureAnimals.put(animal.getName(), animal);
-
+        if (typesOfAviaries == animal.getSizeEnclosure()) {
+            enclosureAnimals.put(animal.getName(), animal);
+        } else {
+            System.out.println("Размер вольера не подходит!");
+        }
     }
 
     public void deleteAnimal (T animal) {

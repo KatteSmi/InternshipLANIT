@@ -1,6 +1,7 @@
 package animals;
 
 import food.Food;
+import food.WrongFoodException;
 
 import java.util.Objects;
 
@@ -9,6 +10,11 @@ public abstract class Animal {
     private int countSatiety = 0;
     private int id;
     private String name;
+    protected TypesOfAviaries sizeEnclosure;
+
+    public TypesOfAviaries getSizeEnclosure() {
+        return sizeEnclosure;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -29,43 +35,28 @@ public abstract class Animal {
         return name;
     }
 
-    public void setCountSatiety(int countSatiety) {
-        this.countSatiety = countSatiety;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public Animal(int countSatiety, int id, String name) {
+    public Animal(int countSatiety, int id, String name, TypesOfAviaries sizeEnclosure) {
         this.countSatiety = countSatiety;
         this.id = id;
         this.name = name;
+        this.sizeEnclosure = sizeEnclosure;
     }
 
-    public Animal (String name) {
+    public Animal (String name, TypesOfAviaries sizeEnclosure) {
         this.name = name;
+        this.sizeEnclosure = sizeEnclosure;
     }
 
-    public abstract boolean eat(Food food);
+    public abstract boolean eat(Food food) throws WrongFoodException;
 
     protected void setSatiety(Food food) {
         countSatiety += food.getCallories();
     }
 
-    public int getCountSatiety() {
-        return countSatiety;
-    }
 }
