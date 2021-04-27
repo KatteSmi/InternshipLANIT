@@ -15,13 +15,12 @@ public abstract class Herbivore extends Animal {
 
     @Override
     public boolean eat(Food food) {
-        if (food instanceof Grass) {
-            System.out.println("Травоядный накормлен!");
-            this.setSatiety(food);
-            return true;
-        } else {
+        if (!(food instanceof Grass)) {
             System.out.println("Эта еда не подходит!");
+            return false;
         }
-        return false;
+        System.out.println("Травоядный накормлен!");
+        this.incSatiety(food);
+        return true;
     }
 }

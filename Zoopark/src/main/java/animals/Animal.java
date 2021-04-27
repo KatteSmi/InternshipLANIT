@@ -16,7 +16,7 @@ public abstract class Animal {
 
     public abstract boolean eat(Food food);
 
-    protected void setSatiety(Food food) {
+    protected void incSatiety(Food food) {
         countSatiety += food.getCallories();
     }
 

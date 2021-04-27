@@ -26,13 +26,13 @@ public class Zoo {
 
         worker.getVoice(lion);
 
-        List<Animal> pondWithAnimals = new ArrayList<Animal>();
+        List<Swim> pondWithAnimals = new ArrayList<Swim>();
         pondWithAnimals.add(new Fish());
         pondWithAnimals.add(new Duck());
         pondWithAnimals.add(new Raccoon());
 
-        for (Animal animal : pondWithAnimals) {
-            ((Swim) animal).swim();
+        for (Swim animal : pondWithAnimals) {
+            animal.swim();
         }
 
         Duck duck = new Duck();

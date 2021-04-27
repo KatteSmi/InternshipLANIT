@@ -16,14 +16,13 @@ public abstract class Carnivorous extends Animal {
 
     @Override
     public boolean eat(Food food) {
-        if (food instanceof Meat) {
-            System.out.println("Хищник накормлен!");
-            this.setSatiety(food);
-            return true;
-        } else {
+        if (!(food instanceof Meat)) {
             System.out.println("Эта еда не подходит!");
+            return false;
         }
-        return false;
+        System.out.println("Хищник накормлен!");
+        this.incSatiety(food);
+        return true;
     }
 }
 
