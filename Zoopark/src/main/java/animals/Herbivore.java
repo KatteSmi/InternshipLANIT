@@ -17,12 +17,11 @@ public abstract class Herbivore extends Animal {
 
     @Override
     public boolean eat(Food food) throws WrongFoodException {
-        if (food instanceof Grass) {
-            System.out.println("Травоядный накормлен!");
-            this.setSatiety(food);
-            return true;
-        } else {
+        if (!(food instanceof Grass)) {
             throw new WrongFoodException("Eда не подходит животному");
         }
+        System.out.println("Травоядный накормлен!");
+        this.setSatiety(food);
+        return true;
     }
 }
