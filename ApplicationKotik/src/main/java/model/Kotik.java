@@ -9,7 +9,7 @@ public class Kotik {
     private String meow;
     private static int instanses = 0;
 
-    public Kotik (int weight, int degreeOfSatiety, String name, String meow) {
+    public Kotik(int weight, int degreeOfSatiety, String name, String meow) {
         this.weight = weight;
         this.degreeOfSatiety = degreeOfSatiety;
         this.name = name;
@@ -21,7 +21,7 @@ public class Kotik {
         instanses++;
     }
 
-    public void setKotik (int weight, int degreeOfSatiety, String name, String meow) {
+    public void setKotik(int weight, int degreeOfSatiety, String name, String meow) {
         this.name = name;
         this.weight = weight;
         this.degreeOfSatiety = degreeOfSatiety;
@@ -52,20 +52,20 @@ public class Kotik {
         weight = weight - 300;
         degreeOfSatiety = degreeOfSatiety - 2;
         if (degreeOfSatiety >= 0) {
-        System.out.println(name +" поиграл. Степень сытости: " + degreeOfSatiety);
-        return true;
-    } else {
+            System.out.println(name + " поиграл. Степень сытости: " + degreeOfSatiety);
+            return true;
+        } else {
             System.out.println("Покормите кота!");
         }
-    return false;
+        return false;
     }
 
     public boolean meow() {
         weight = weight - 100;
         degreeOfSatiety = degreeOfSatiety - 1;
         if (degreeOfSatiety >= 0) {
-        System.out.println("Кот говорит Meow. Степень сытости: " + degreeOfSatiety);
-        return true;
+            System.out.println("Кот говорит Meow. Степень сытости: " + degreeOfSatiety);
+            return true;
         } else {
             System.out.println("Покормите кота!");
         }
@@ -76,44 +76,44 @@ public class Kotik {
         weight = weight - 200;
         degreeOfSatiety = degreeOfSatiety - 2;
         if (degreeOfSatiety >= 0) {
-        System.out.println("Кот сходил в туалет. Степень сытости: " + degreeOfSatiety);
-        return true;
-    } else {
-        System.out.println("Покормите кота!");
+            System.out.println("Кот сходил в туалет. Степень сытости: " + degreeOfSatiety);
+            return true;
+        } else {
+            System.out.println("Покормите кота!");
+        }
+        return false;
     }
-    return false;
-}
 
     public boolean sleep() {
         weight = weight + 200;
         degreeOfSatiety = degreeOfSatiety + 2;
         if (degreeOfSatiety >= 0) {
-        System.out.println("Кот спит. Степень сытости: " + degreeOfSatiety);
-        return true;
-    } else {
-        System.out.println("Покормите кота!");
+            System.out.println("Кот спит. Степень сытости: " + degreeOfSatiety);
+            return true;
+        } else {
+            System.out.println("Покормите кота!");
         }
         return false;
-        }
+    }
 
-    public boolean chaseMouse () {
+    public boolean chaseMouse() {
         weight = weight - 500;
         degreeOfSatiety = degreeOfSatiety - 5;
         if (degreeOfSatiety >= 0) {
-        System.out.println(name +" ловит мышей. Степень сытости: " + degreeOfSatiety);
-        return true;
+            System.out.println(name + " ловит мышей. Степень сытости: " + degreeOfSatiety);
+            return true;
         } else {
-        System.out.println("Покормите кота!");
+            System.out.println("Покормите кота!");
         }
         return false;
-        }
+    }
 
-    public void eat (int amount) {
+    public void eat(int amount) {
         weight = weight + amount;
         System.out.println("Кошка поела и весит: " + weight);
     }
 
-    public void eat(int amount, String foodName ) {
+    public void eat(int amount, String foodName) {
         weight = weight + amount;
         degreeOfSatiety = degreeOfSatiety + 20;
         System.out.println("Кот поел :" + foodName + ". Вес: " + weight + ". Степень сытости: " + degreeOfSatiety);
@@ -125,19 +125,8 @@ public class Kotik {
         eat(amount, foodName);
     }
 
-    public boolean repleteCat() {
-        if (getDegreeOfSatiety() > 0) {
-            return true;
-        } else if (getDegreeOfSatiety() <= 0) {
-            System.out.println("Кот голоден, нужно его покормить!");
-            eat(250," Мокрый корм");
-        }
-        return false;
-    }
-
     public void liveAnotherDay() {
         for (int i = 1; i <= 24; i++) {
-            if (repleteCat()) {
                 int value = 5;
                 int randomNumber = (int) (Math.random() * value + 1);
                 System.out.print(i + ". ");
@@ -161,7 +150,7 @@ public class Kotik {
             }
         }
     }
-}
+
 
 
 

@@ -3,7 +3,7 @@ import model.Kotik;
 public class Application {
     public static void main(String[] args) {
 
-        Kotik kotik = new Kotik(5000, 50, "Vasya", "meow");
+        Kotik kotik = new Kotik(5000, 5, "Vasya", "meow");
         Kotik cat = new Kotik();
         cat.setKotik(7000, 100, "Murka", "meow");
 
