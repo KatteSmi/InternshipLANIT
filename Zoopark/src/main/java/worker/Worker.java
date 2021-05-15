@@ -7,8 +7,12 @@ import food.WrongFoodException;
 
 public class Worker {
 
-    public void feed (Animal animal, Food food) throws WrongFoodException {
-        animal.eat(food);
+    public void feed(Animal animal, Food food) {
+        try {
+            animal.eat(food);
+        } catch (WrongFoodException exception) {
+            exception.printStackTrace();
+        }
     }
 
     public void getVoice (Voice animal) {

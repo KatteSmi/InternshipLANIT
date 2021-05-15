@@ -14,55 +14,20 @@ public class AnimalEnclosure<T extends Animal> {
     private final Map<String, T> enclosureAnimals = new HashMap<>();
     TypesOfAviaries typesOfAviaries;
 
+
     public AnimalEnclosure(TypesOfAviaries typesOfAviaries) {
         this.typesOfAviaries = typesOfAviaries;
     }
 
+
     public void addAnimal(T animal) {
 
-        if (checkingTheEnclosure(animal)) {
+        if (typesOfAviaries.ordinal() >= animal.getSizeEnclosure().ordinal()) {
             enclosureAnimals.put(animal.getName(), animal);
         } else {
             System.out.println("Размер вольера не подходит!");
         }
     }
-
-    public boolean checkingTheEnclosure(T animal) {
-
-        switch (typesOfAviaries) {
-            case SMALLAVIARY:
-                switch (animal.getSizeEnclosure()) {
-                    case MEDIUMAVIARY:
-                    case LARGEAVIARY:
-                    case VERYLARGEAVIARY:
-                        return false;
-                }
-                return true;
-
-            case MEDIUMAVIARY:
-                switch (animal.getSizeEnclosure()) {
-                    case LARGEAVIARY:
-                    case VERYLARGEAVIARY:
-                        return false;
-                }
-                return true;
-
-            case LARGEAVIARY:
-                switch (animal.getSizeEnclosure()) {
-                    case VERYLARGEAVIARY:
-                        return false;
-                }
-                return true;
-
-
-            case VERYLARGEAVIARY:
-                return true;
-
-            default:
-                throw new IllegalStateException("UnexpectedException" + typesOfAviaries);
-        }
-    }
-
 
     public void deleteAnimal(T animal) {
 

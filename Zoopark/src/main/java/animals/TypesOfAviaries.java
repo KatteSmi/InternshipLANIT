@@ -1,10 +1,10 @@
 package animals;
 
 public enum TypesOfAviaries {
-    SMALLAVIARY(50),
-    MEDIUMAVIARY(100),
-    LARGEAVIARY(150),
-    VERYLARGEAVIARY(200);
+    SMALLAVIARY(0),
+    MEDIUMAVIARY(1),
+    LARGEAVIARY(2),
+    VERYLARGEAVIARY(3);
 
     private int sizeEnclosure;
 
@@ -16,4 +16,6 @@ public enum TypesOfAviaries {
     TypesOfAviaries(int sizeEnclosure) {
         this.sizeEnclosure = sizeEnclosure;
     }
+
+
 }

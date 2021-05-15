@@ -48,7 +48,7 @@ public abstract class Animal {
         this.sizeEnclosure = sizeEnclosure;
     }
 
-    public Animal (String name, TypesOfAviaries sizeEnclosure) {
+    public Animal(String name, TypesOfAviaries sizeEnclosure) {
         this.name = name;
         this.sizeEnclosure = sizeEnclosure;
     }

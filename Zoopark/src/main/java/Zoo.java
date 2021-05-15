@@ -6,17 +6,38 @@ import enclosure.AnimalEnclosure;
 import animals.Carnivorous;
 import animals.Herbivore;
 import animals.carnivorous.Lion;
+import food.Food;
+import food.WrongFoodException;
+import food.typesOfFoodCarnivorous.Zebra;
+import food.typesOfFoodHerbivores.Salat;
+import worker.Worker;
 
 import java.util.Map;
 
 public class Zoo {
+
     public static void main(String[] args) {
 
+        Zebra zebra = new Zebra();
+        Salat salat = new Salat();
+
+        Worker worker = new Worker();
+
         Lion lion = new Lion("Лев", TypesOfAviaries.LARGEAVIARY);
-        Lion leo = new Lion("Маленький лев", TypesOfAviaries.SMALLAVIARY);
+        Lion leo = new Lion("Маленький лев", TypesOfAviaries.MEDIUMAVIARY);
+        Wolf wolf = new Wolf("Волк", TypesOfAviaries.VERYLARGEAVIARY);
 
         Duck duck = new Duck("Утка", TypesOfAviaries.MEDIUMAVIARY);
-        Wolf wolf = new Wolf("Волк", TypesOfAviaries.LARGEAVIARY);
+
+        worker.feed(lion, salat);
+        worker.feed(duck, zebra);
+
+
+        try {
+            lion.eat(salat);
+        } catch (WrongFoodException exception) {
+            exception.printStackTrace();
+        }
 
 
         AnimalEnclosure<Carnivorous> animalEnclosureCarnivorous = new AnimalEnclosure<>(TypesOfAviaries.LARGEAVIARY);
@@ -25,9 +46,14 @@ public class Zoo {
         animalEnclosureCarnivorous.addAnimal(lion);
         animalEnclosureCarnivorous.addAnimal(leo);
         animalEnclosureCarnivorous.addAnimal(wolf);
-
-      Map<String, Carnivorous> copy=  animalEnclosureCarnivorous.getEnclosureAnimals();
         System.out.println(animalEnclosureCarnivorous);
+
+        animalEnclosureHerbivore.addAnimal(duck);
+        System.out.println(animalEnclosureHerbivore);
+
+
+        Map<String, Carnivorous> copy = animalEnclosureCarnivorous.getEnclosureAnimals();
+
 
         animalEnclosureCarnivorous.deleteAnimal(lion);
         System.out.println(copy + " -Копия");
@@ -42,8 +68,6 @@ public class Zoo {
         System.out.println(findDuck);
 
         System.out.println(animalEnclosureHerbivore);
-
-
 
 
     }
