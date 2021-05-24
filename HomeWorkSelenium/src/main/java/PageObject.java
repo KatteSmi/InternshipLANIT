@@ -49,6 +49,7 @@ public class PageObject {
 
     public void search() {
         search.sendKeys("Принтер");
+        zhdun();
         search.sendKeys(Keys.ENTER);
     }
 
@@ -62,6 +63,7 @@ public class PageObject {
     }
 
     public void choice() {
+        zhdun();
         choice.click();
     }
 
@@ -71,11 +73,6 @@ public class PageObject {
 
     public void checkBox() {
         if (!checkBox.getAttribute("class").contains("checkbox-checked")) {
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             checkBox.click();
         }
     }
@@ -90,4 +87,13 @@ public class PageObject {
             System.out.println("Цена - " + priceList.get(i).getText());
         }
     }
+
+    public void zhdun() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
+

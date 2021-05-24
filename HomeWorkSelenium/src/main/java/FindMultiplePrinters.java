@@ -1,6 +1,7 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+
 import java.util.concurrent.TimeUnit;
 
 public class FindMultiplePrinters {
@@ -19,7 +20,7 @@ public class FindMultiplePrinters {
 
         driver.get("https://www.avito.ru/");
 
-        PageObject page = PageFactory.initElements(driver,PageObject.class);
+        PageObject page = PageFactory.initElements(driver, PageObject.class);
 
         page.category();
         page.desiredCategory();
