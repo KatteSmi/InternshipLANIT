@@ -59,11 +59,11 @@ public class PageObject {
 
     public void desiredCity() {
         desiredCity.sendKeys("Владивосток");
+        zhdun();
         desiredCity.sendKeys(Keys.ENTER);
     }
 
     public void choice() {
-        zhdun();
         choice.click();
     }
 
