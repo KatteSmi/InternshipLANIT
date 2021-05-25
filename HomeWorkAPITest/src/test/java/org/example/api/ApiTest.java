@@ -67,7 +67,6 @@ public class ApiTest {
 
     @Test
     public void testDelete() throws IOException {
-
         given()
                 .body(pet)
                 .when()

@@ -46,10 +46,6 @@ public class HomeTaskApiTest {
                 .log(LogDetail.ALL)
                 .build();
         RestAssured.filters(new ResponseLoggingFilter());
-    }
-
-    @Test
-    public void checkObjectPost() {
 
         given().
                 body(store)
@@ -61,13 +57,6 @@ public class HomeTaskApiTest {
 
     @Test
     public void checkObjectGet() {
-        given().
-                body(store)
-                .when()
-                .post("store/order")
-                .then()
-                .statusCode(200);
-
         Store actual =
                 given()
                         .pathParam("petId", id)
@@ -82,13 +71,6 @@ public class HomeTaskApiTest {
 
     @Test
     public void checkObjectDelete() {
-        given().
-                body(store)
-                .when()
-                .post("store/order")
-                .then()
-                .statusCode(200);
-
         given()
                 .pathParam("petId", id)
                 .when()
@@ -116,7 +98,6 @@ public class HomeTaskApiTest {
 
     @Test
     public void inventory() {
-
         Map map =
                 given()
                         .when()
