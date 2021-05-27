@@ -37,7 +37,6 @@ public class ApiTest {
                 .setContentType(ContentType.JSON)
                 .log(LogDetail.ALL)
                 .build();
-
         RestAssured.filters(new ResponseLoggingFilter());
     }
 
