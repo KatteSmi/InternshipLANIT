@@ -5,17 +5,13 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
-import io.restassured.specification.RequestSpecification;
 import org.example.model.Store;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import sun.security.mscapi.CPublicKey;
-
+import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.given;
-
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -25,18 +21,19 @@ public class HomeTaskApiTest {
     private int petId;
     private int quantity;
 
-    @BeforeClass
+    @BeforeMethod
     public void prepare() throws IOException {
-        id = new Random().nextInt(500000);
         store = new Store();
-        petId = new Random().nextInt(20000);
+        id = new Random().nextInt(500000);
+        petId = new Random().nextInt(2000);
         quantity = new Random().nextInt(50);
         store.setId(id);
         store.setPetId(petId);
         store.setQuantity(quantity);
-        store.setShipDate("2021-05-20T11:28:29.632Z");
+        store.setShipDate("2021-05-20T11:28:29.632+0000");
         store.setStatus("placed");
         store.setComplete(true);
+
         System.getProperties().load(ClassLoader.getSystemResourceAsStream("my.properties"));
         RestAssured.requestSpecification = new RequestSpecBuilder()
                 .setBaseUri("https://petstore.swagger.io/v2/")
@@ -52,29 +49,45 @@ public class HomeTaskApiTest {
                 .when()
                 .post("store/order")
                 .then()
-                .statusCode(200);
+                .statusCode(200)
+                .body(
+                        "id", equalTo(store.getId()),
+                        "petId", equalTo(store.getPetId()),
+                        "quantity", equalTo(store.getQuantity()),
+                        "shipDate", equalTo(store.getShipDate()),
+                        "status", equalTo(store.getStatus()),
+                        "complete", equalTo(store.isComplete())
+                );
     }
 
     @Test
     public void checkObjectGet() {
         Store actual =
                 given()
-                        .pathParam("petId", id)
+                        .pathParam("id", store.getId())
                         .when()
-                        .get("/store/order/{petId}")
+                        .get("/store/order/{id}")
                         .then()
                         .statusCode(200)
+                        .body(
+                                "id", equalTo(store.getId()),
+                                "petId", equalTo(store.getPetId()),
+                                "quantity", equalTo(store.getQuantity()),
+                                "shipDate", equalTo(store.getShipDate()),
+                                "status", equalTo(store.getStatus()),
+                                "complete", equalTo(store.isComplete())
+                        )
                         .extract().body()
                         .as(Store.class);
-        Assert.assertEquals(actual.getPetId(), store.getPetId());
+        Assert.assertEquals(actual.getId(), store.getId());
     }
 
     @Test
     public void checkObjectDelete() {
         given()
-                .pathParam("petId", id)
+                .pathParam("id", store.getId())
                 .when()
-                .delete("/store/order/{petId}")
+                .delete("/store/order/{id}")
                 .then()
                 .statusCode(200);
     }
@@ -82,16 +95,16 @@ public class HomeTaskApiTest {
     @Test
     public void checkObjectGetError() {
         given()
-                .pathParam("petId", id)
+                .pathParam("id", store.getId())
                 .when()
-                .delete("/store/order/{petId}")
+                .delete("/store/order/{id}")
                 .then()
                 .statusCode(200);
 
         given()
-                .pathParam("petId", id)
+                .pathParam("id", store.getId())
                 .when()
-                .get("/store/order/{petId}")
+                .get("/store/order/{id}")
                 .then()
                 .statusCode(404);
     }
@@ -111,9 +124,8 @@ public class HomeTaskApiTest {
 
         Assert.assertTrue(map.get("sold") instanceof Double);
         Assert.assertTrue(map.get("pending") instanceof Double);
-        Assert.assertTrue(map.get("free") instanceof Double);
+        Assert.assertTrue(map.get("Available") instanceof Double);
         Assert.assertTrue(map.get("available") instanceof Double);
-        Assert.assertTrue(map.get("412") instanceof Double);
-        Assert.assertTrue(map.get("44422") instanceof Double);
+        Assert.assertTrue(map.get("string") instanceof Double);
     }
 }

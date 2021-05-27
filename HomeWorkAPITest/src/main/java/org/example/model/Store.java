@@ -15,7 +15,6 @@ public class Store {
 
     @SerializedName("shipDate")
     private  String shipDate;
-//    = HelperClass.getActualData();
 
     @SerializedName("status")
     private String status;
